@@ -1,0 +1,10 @@
+# Node.js
+node_modules/
+dist/
+
+# Angular
+frontend/node_modules/
+frontenddist/
+
+# TypeScript
+backend/tsconfig.tsbuildinfo
