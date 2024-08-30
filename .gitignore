@@ -4,7 +4,7 @@ dist/
 
 # Angular
 frontend/node_modules/
-frontenddist/
+frontend/dist/
 
 # TypeScript
 backend/tsconfig.tsbuildinfo
