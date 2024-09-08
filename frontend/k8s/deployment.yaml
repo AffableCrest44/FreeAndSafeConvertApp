@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: quickconvert-angular-app
+  labels:
+    app: quickconvert-angular-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: quickconvert-angular-app
+  template:
+    metadata:
+      labels:
+        app: quickconvert-angular-app
+    spec:
+      containers:
+      - name: quickconvert-angular-app
+        image: jxr6n4l/quickconvert-angular-app:latest
+        ports:
+        - containerPort: 80
+        resources:
+          requests:
+            memory: "512Mi"
+            cpu: "500m"
+          limits:
+            memory: "512Mi"
+            cpu: "500m"

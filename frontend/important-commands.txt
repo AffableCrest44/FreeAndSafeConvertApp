@@ -1,0 +1,133 @@
+
+docker system prune -a
+
+docker buildx create --use
+docker buildx inspect --bootstrap
+
+docker login
+
+docker buildx build --platform linux/amd64,linux/arm64 -t jxr6n4l/quickconvert-angular-app:latest .
+docker buildx build --platform linux/amd64,linux/arm64 -t jxr6n4l/quickconvert-angular-app:latest --push .
+
+
+
+gcloud init
+gcloud components update
+
+gcloud container clusters create quickconvert-cluster \
+    --zone us-central1-a \
+    --machine-type e2-small \
+    --num-nodes 3 \
+    --enable-ip-alias \
+    --enable-autoscaling --min-nodes 1 --max-nodes 2
+
+
+
+gcloud container clusters get-credentials CLUSTER_NAME --zone ZONE --project quickconvert
+
+gcloud container clusters get-credentials quickconvert-cluster --zone us-central1-a
+
+kubectl apply -f deployment.yaml
+kubectl apply -f service.yaml
+kubectl apply -f ingress.yaml
+gcloud compute addresses create quickconvert-static-ip --region=us-central1 --network-tier=STANDARD
+
+gcloud compute addresses describe quickconvert-static-ip --regional --format="get(address)
+
+35.208.74.101
+
+
+
+
+kubectl describe node gke-quickconvert1-cluste-default-pool-4d707d36-6bj8
+kubectl describe node gke-quickconvert1-cluste-default-pool-4d707d36-z7t6
+
+kubectl get deployments
+
+kubectl get pods
+
+kubectl delete pod 
+kubectl get service quickconvert-angular-service
+kubectl get ingress quickconvert-angular-ingress
+
+
+kubectl describe pod <pod-name>
+kubectl describe pod quickconvert-angular-app-5c5745df9f-ck9nj
+quickconvert-angular-app-5c5745df9f-ck9nj
+quickconvert-angular-app-5c5745df9f-rfpx8
+
+kubectl logs <pod-name>
+
+gcloud container clusters delete quickconvert1-cluster --zone us-central1-a
+
+gcloud container clusters create quickconvert-cluster \
+    --zone us-central1-a \
+    --num-nodes 2 \
+    --machine-type e2-small \
+    --enable-ip-alias
+
+kubectl logs quickconvert-angular-app-5c5745df9f-ck9nj
+
+kubectl get nodes -o wide
+
+
+I have an angular web app running on GCP GKE. It is accessible through http://23.251.145.157/. I have configured the GKE cluster with following command and configured nodes and pods through following YAMLs. Give me steps to recreate same infrastructure as Code using terraform. 
+
+Cluster command:
+gcloud container clusters create quickconvert-cluster \
+    --zone us-central1-a \
+    --num-nodes 2 \
+    --machine-type e2-small \
+    --enable-ip-alias
+
+Deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: quickconvert-angular-app
+  labels:
+    app: quickconvert-angular-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: quickconvert-angular-app
+  template:
+    metadata:
+      labels:
+        app: quickconvert-angular-app
+    spec:
+      containers:
+      - name: quickconvert-angular-app
+        image: jxr6n4l/quickconvert-angular-app:latest
+        ports:
+        - containerPort: 80
+        resources:
+          requests:
+            memory: "512Mi"
+            cpu: "500m"
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
+
+
+
+service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: quickconvert-angular-service
+spec:
+  selector:
+    app: quickconvert-angular-app
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+  type: LoadBalancer
+
+
+
+
+
+
