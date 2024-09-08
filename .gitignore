@@ -8,3 +8,6 @@ frontend/dist/
 
 # TypeScript
 backend/tsconfig.tsbuildinfo
+
+frontend/Terraform/.terraform/
+
