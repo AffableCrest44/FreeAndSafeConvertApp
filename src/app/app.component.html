@@ -1,0 +1,22 @@
+<header class="bg-dark text-white py-3">
+    <nav class="container d-flex justify-content-between align-items-center">
+      <div class="d-flex align-items-center">
+        <img src="assets/QuickLogo.png" class="logo-image" alt="Quick Convert Logo">
+        <div class="logo fw-bold">Quick Convert</div>
+      </div>
+      <div class="menu">
+        <a routerLink="/" class="text-white me-2">Home</a>
+        <a routerLink="/about" class="text-white me-2">About</a>
+        <a routerLink="/blog" class="text-white me-2">Blog</a>
+        <a routerLink="/contact" class="text-white me-2">Contact</a>
+        <a href="#" class="btn btn-outline-light">Log In</a>
+      </div>
+    </nav>
+  </header>
+  
+  <router-outlet></router-outlet> <!-- Angular routing will load page content here -->
+  
+  <footer class="bg-dark text-white text-right py-3">
+    <p>© 2024 Quick Convert. All rights reserved.</p>
+  </footer>
+  

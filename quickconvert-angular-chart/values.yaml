@@ -1,0 +1,18 @@
+replicaCount: 3
+
+image:
+  repository: jxr6n4l/quickconvert-angular-app
+  tag: latest
+  pullPolicy: IfNotPresent
+
+service:
+  type: LoadBalancer
+  port: 80
+
+resources:
+  limits:
+    cpu: 500m
+    memory: 512Mi
+  requests:
+    cpu: 500m
+    memory: 512Mi

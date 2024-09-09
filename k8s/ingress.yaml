@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: quickconvert-angular-ingress
+  annotations:
+    kubernetes.io/ingress.class: "nginx"  # Use "nginx" if using NGINX ingress controller
+spec:
+  rules:
+  - host: 104.197.232.150  # Use a domain name or public IP if needed
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: quickconvert-angular-service
+            port:
+              number: 80
+

@@ -1,0 +1,12 @@
+apiVersion: cloud.google.com/v1
+kind: BackendConfig
+metadata:
+  name: quickconvert-angular-app-backendconfig
+spec:
+  healthCheck:
+    checkIntervalSec: 30
+    timeoutSec: 10
+    healthyThreshold: 3
+    unhealthyThreshold: 3
+    type: HTTP
+  timeoutSec: 30
