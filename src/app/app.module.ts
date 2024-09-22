@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router'; // Import RouterModule
 
 import { AppComponent } from './app.component';
-import { HomePageComponent } from './components/home-page/home-page.component'; // Corrected path for HomePageComponent
+import { HomePageComponent } from './app/components/home-page/home-page.component'; // Corrected path for HomePageComponent
 
 @NgModule({
   declarations: [
